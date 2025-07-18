@@ -1,45 +1,53 @@
 import streamlit as st
 
-# Page configuration
-st.set_page_config(page_title="Welcome Form", page_icon="📝", layout="centered")
+# Page config
+st.set_page_config(page_title="User Info Form", layout="centered")
 
-# Custom CSS for improved UI
+# Inject CSS for better styling
 st.markdown("""
     <style>
-        .main {
-            background-color: #f0f8ff;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            max-width: 600px;
+        .main-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
             margin: auto;
         }
-        h1, h3 {
+        h1 {
             text-align: center;
-            color: #2c3e50;
+            color: #222;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 2.2rem;
         }
-        .stTextInput > div > div > input {
+        label {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+        }
+        .stTextInput > div > div > input, 
+        .stNumberInput > div > div > input {
             border: 1px solid #ccc;
-            border-radius: 8px;
             padding: 10px;
+            border-radius: 8px;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# Main UI container
-with st.container():
-    st.markdown('<div class="main">', unsafe_allow_html=True)
-    st.markdown("## 👋 Welcome to My App")
-    st.markdown("### Please enter your details below")
+# Main container
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-    # Input fields
-    name = st.text_input("Enter your name")
-    age = st.number_input("Enter your age", min_value=1, max_value=120, step=1)
+# Title
+st.markdown("<h1>Welcome</h1>", unsafe_allow_html=True)
+st.markdown("### Please enter your details below")
 
-    # Display result after input
-    if name and age:
-        st.success(f"🎉 Welcome, **{name}**! You are **{age}** years old.")
-    else:
-        st.info("📝 Please fill in both fields to continue.")
+# User Inputs
+name = st.text_input("Name")
+age = st.number_input("Age", min_value=1, max_value=120, step=1)
 
-    st.markdown('</div>', unsafe_allow_html=True)
+# Display after input
+if name and age:
+    st.markdown("---")
+    st.markdown(f"**Hello {name},** you are **{int(age)}** years old.")
+
+st.markdown("</div>", unsafe_allow_html=True)
