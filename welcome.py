@@ -3,33 +3,36 @@ import streamlit as st
 # Page config
 st.set_page_config(page_title="User Info Form", layout="centered")
 
-# Inject CSS for better styling
+# Custom CSS for stylish UI
 st.markdown("""
     <style>
+        body {
+            background-color: #e6f0f8;
+        }
         .main-container {
             background-color: #ffffff;
-            border-radius: 12px;
             padding: 3rem 2rem;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             max-width: 500px;
-            margin: auto;
+            margin: 3rem auto;
+            font-family: 'Segoe UI', sans-serif;
         }
         h1 {
+            color: #1a1a1a;
             text-align: center;
-            color: #222;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 2.2rem;
-        }
-        label {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #333;
+            margin-bottom: 1.5rem;
         }
         .stTextInput > div > div > input, 
         .stNumberInput > div > div > input {
+            background-color: #f5f7fa;
             border: 1px solid #ccc;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 10px;
+        }
+        .stMarkdown {
+            font-size: 1rem;
+            color: #333333;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -37,17 +40,17 @@ st.markdown("""
 # Main container
 st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-# Title
-st.markdown("<h1>Welcome</h1>", unsafe_allow_html=True)
-st.markdown("### Please enter your details below")
+# Title and subtitle
+st.markdown("<h1>Welcome to the Portal</h1>", unsafe_allow_html=True)
+st.markdown("Please fill in the details below:")
 
-# User Inputs
-name = st.text_input("Name")
-age = st.number_input("Age", min_value=1, max_value=120, step=1)
+# Input fields
+name = st.text_input("Your Name")
+age = st.number_input("Your Age", min_value=1, max_value=120, step=1)
 
-# Display after input
+# Display message after input
 if name and age:
     st.markdown("---")
-    st.markdown(f"**Hello {name},** you are **{int(age)}** years old.")
+    st.markdown(f"Hello, **{name}**. You are **{int(age)}** years old.")
 
-st.markdown("</div>", unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
